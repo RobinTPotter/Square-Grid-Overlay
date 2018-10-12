@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_grid_2x2"
+        android:icon="@drawable/rtp_2x2"
+        android:orderInCategory="100"
+        android:title="2 x 2"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_grid_3x3"
+        android:icon="@drawable/rtp_3x3"
+        android:orderInCategory="100"
+        android:title="3 x 3"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_grid_4x4"
+        android:icon="@drawable/rtp_4x4"
+        android:orderInCategory="100"
+        android:title="4 x 4"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_grid_4x3"
+        android:icon="@drawable/rtp_4x3"
+        android:orderInCategory="100"
+        android:title="4 x 3"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_grid_3x4"
+        android:icon="@drawable/rtp_3x4"
+        android:orderInCategory="100"
+        android:title="3 x 4"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_grid_5x5"
+        android:icon="@drawable/rtp_5x5"
+        android:orderInCategory="100"
+        android:title="5x5"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_grid_colour_black"
+        android:icon="@drawable/rtp_black"
+        android:orderInCategory="100"
+        android:title="Black"
+        app:showAsAction="ifRoom" />
+
+
+    <item
+        android:id="@+id/action_grid_colour_yellow"
+        android:icon="@drawable/rtp_yellow"
+        android:orderInCategory="100"
+        android:title="Yellow"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_image_scale_mode"
+        android:icon="@drawable/rtp_scale_mode"
+        android:orderInCategory="100"
+        android:title="Scale Mode"
+        app:showAsAction="ifRoom" />
+
+
+    <item
+        android:id="@+id/action_image_rotate_mode"
+        android:icon="@drawable/rtp_rotate_mode"
+        android:orderInCategory="100"
+        android:title="Rotate"
+        app:showAsAction="ifRoom" />
+</menu>
