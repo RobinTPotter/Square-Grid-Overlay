@@ -15,8 +15,8 @@ import android.widget.Toast;
 
 public class PictureView extends View {
 
-
     private static final float ROTATION_MULTIPLIER = 50.0f;
+
     private int offsetx = 0;
     private int offsety = 0;
 
@@ -30,24 +30,25 @@ public class PictureView extends View {
 
     private int colour = Color.BLACK;
 
-    public int getC() {
-        return c;
+    private int columns = 0;
+    private int rows = 0;
+
+
+    public int getColumns() {
+        return columns;
     }
 
-    public void setC(int c) {
-        this.c = c;
+    public void setColumns(int c) {
+        this.columns = c;
     }
 
-    public int getR() {
-        return r;
+    public int getRows() {
+        return rows;
     }
 
-    public void setR(int r) {
-        this.r = r;
+    public void setRows(int r) {
+        this.rows = r;
     }
-
-    private int c = 0;
-    private int r = 0;
 
     private boolean stateLocked = false;
 
@@ -72,13 +73,11 @@ public class PictureView extends View {
         super(context);
         mScaleDetector = new ScaleGestureDetector(context, new ScaleListener());
 
-
     }
 
     public PictureView(Context context, AttributeSet attr) {
         super(context, attr);
         mScaleDetector = new ScaleGestureDetector(context, new ScaleListener());
-
 
     }
 
@@ -134,16 +133,14 @@ public class PictureView extends View {
         return mRotate;
     }
 
-
     public void setRowsCols(int rt, int ct) {
-        r = rt;
-        c = ct;
+        rows = rt;
+        columns = ct;
     }
 
     public void onDraw(Canvas canvas) {
 
         super.onDraw(canvas);
-
 
         try {
             if (bitmap == null) {
@@ -185,17 +182,17 @@ public class PictureView extends View {
             } else {
                 Matrix matrix = new Matrix();
                 matrix.reset();
+                matrix.setTranslate(getWidth()/2,getHeight()/2);
                 matrix.postScale(mScaleFactor, mScaleFactor);
                 matrix.preRotate(mRotate);
-                matrix.postTranslate(mPosX / mScaleFactor, mPosY / mScaleFactor);
+                matrix.postTranslate(mPosX , mPosY );
                 canvas.drawBitmap(bitmap, matrix, null);
             }
             //make sure grid goes in the centre
 
-
             //Toast.makeText(this, "canvas is " + canvas.toString(), Toast.LENGTH_SHORT).show();
 
-            if (c > 0 & r > 0) {
+            if (columns > 0 & rows > 0) {
 
                 Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
                 paint.setStrokeWidth(1.0f);
@@ -205,25 +202,23 @@ public class PictureView extends View {
                 //Toast.makeText(this, "set paints etc", Toast.LENGTH_SHORT).show();
 
                 //get max square size
-                int width = getWidth() / c;
-                int height = getHeight() / r;
+                int width = getWidth() / columns;
+                int height = getHeight() / rows;
                 if (width < height) height = width;
                 else width = height;
 
-                offsetx = getWidth() / 2 - (width * c) / 2;
-                offsety = getHeight() / 2 - (height * r) / 2;
-
+                offsetx = getWidth() / 2 - (width * columns) / 2;
+                offsety = getHeight() / 2 - (height * rows) / 2;
 
                 //Toast.makeText(this, "" + width + "," + height, Toast.LENGTH_SHORT).show();
 
-                for (int cc = 0; cc < c; cc++) {
-                    for (int rr = 0; rr < r; rr++) {
+                for (int cc = 0; cc < columns; cc++) {
+                    for (int rr = 0; rr < rows; rr++) {
                         Rect rect = new Rect(offsetx + cc * width, offsety + rr * height, offsetx + (cc + 1) * width - 1, offsety + (rr + 1) * height - 1);
                         //Toast.makeText(this, "" + rect, Toast.LENGTH_SHORT).show();
                         canvas.drawRect(rect, paint);
                     }
                 }
-
 
                 if (paint.getTextSize() != 20.f) paint.setTextSize(20.0f);
                 canvas.drawText("" + mScaleFactor + " " + mRotate + " " + mPosX + "," + mPosY, 0, getHeight() - 20, paint);
@@ -236,7 +231,6 @@ public class PictureView extends View {
         }
     }
 
-
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
 
@@ -244,9 +238,7 @@ public class PictureView extends View {
 
         // Let the ScaleGestureDetector inspect all events.
 
-
         mScaleDetector.onTouchEvent(ev);
-
 
         final int action = ev.getAction();
         switch (action & MotionEvent.ACTION_MASK) {
@@ -267,6 +259,7 @@ public class PictureView extends View {
                 // Only move if the ScaleGestureDetector isn't processing a gesture.
                 // if (!mScaleDetector.isInProgress()) {
                 if (true) {
+
                     final float dx = x - mLastTouchX;
                     final float dy = y - mLastTouchY;
 
@@ -308,10 +301,8 @@ public class PictureView extends View {
             }
         }
 
-
         return true;
     }
-
 
     private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
 

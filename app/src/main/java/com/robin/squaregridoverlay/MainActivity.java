@@ -53,9 +53,7 @@ public class MainActivity extends AppCompatActivity
             final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
 
-
             final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-
 
             final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -64,7 +62,6 @@ public class MainActivity extends AppCompatActivity
             toggle.syncState();
             NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
             navigationView.setNavigationItemSelectedListener(this);
-
 
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -85,9 +82,7 @@ public class MainActivity extends AppCompatActivity
                 }
             });
 
-
             pictureView = (PictureView) findViewById(R.id.pictureView);
-
 
         } catch (Exception ex) {
             Toast.makeText(this, "error: " + ex.getMessage(), Toast.LENGTH_LONG).show();
@@ -96,8 +91,8 @@ public class MainActivity extends AppCompatActivity
 
     public void onSaveInstanceState(Bundle savedInstanceState) {
         savedInstanceState.putInt("colour", pictureView.getColour());
-        savedInstanceState.putInt("columns", pictureView.getC());
-        savedInstanceState.putInt("rows", pictureView.getR());
+        savedInstanceState.putInt("columns", pictureView.getColumns());
+        savedInstanceState.putInt("rows", pictureView.getRows());
         savedInstanceState.putFloat("mPosX", pictureView.getPosX());
         savedInstanceState.putFloat("mPosY", pictureView.getPosY());
         savedInstanceState.putFloat("mRotate", pictureView.getRotate());
@@ -110,8 +105,8 @@ public class MainActivity extends AppCompatActivity
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
             pictureView.setColour(savedInstanceState.getInt("colour", Color.BLACK));
-            pictureView.setC(savedInstanceState.getInt("columns", 1));
-            pictureView.setR(savedInstanceState.getInt("rows",1));
+            pictureView.setColumns(savedInstanceState.getInt("columns", 1));
+            pictureView.setRows(savedInstanceState.getInt("rows",1));
             pictureView.setPosX(savedInstanceState.getFloat("mPosX", 0f));
             pictureView.setPosY(savedInstanceState.getFloat("mPosY", 0f));
             pictureView.setRotate(savedInstanceState.getFloat("mRotate", 0f));
@@ -209,13 +204,6 @@ public class MainActivity extends AppCompatActivity
             }
            // Intent chooser = Intent.createChooser(selectImageIntent, "Choose Picture");
           //  startActivityForResult(chooser, SELECT_PHOTO);
-
-
-
-
-
-
-
 
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
