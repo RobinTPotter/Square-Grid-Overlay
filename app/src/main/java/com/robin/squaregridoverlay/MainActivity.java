@@ -74,21 +74,23 @@ public class MainActivity extends AppCompatActivity
                 public void onClick(View view) {
                     boolean isrotating = pictureView.getRotating();
                     pictureView.setRotating(!isrotating);
+                    if (locked) return;
                     if (isrotating) {
                         fab2.setImageResource(android.R.drawable.ic_menu_rotate);
-
                     } else {
                         fab2.setImageResource(android.R.drawable.ic_menu_search);
                     }
+                    pictureView.invalidate();
                 }
             });
 
 
             final FloatingActionButton fab3 = (FloatingActionButton) findViewById(R.id.fab3);
-            fab2.setOnClickListener(new View.OnClickListener() {
+            fab3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     boolean isblack = (pictureView.getColour() == Color.BLACK);
+                    if (locked) return;
                     if (isblack) {
                         pictureView.setColour(Color.YELLOW);
                         fab3.setBackgroundTintList(ColorStateList.valueOf(Color.BLACK));
@@ -96,6 +98,7 @@ public class MainActivity extends AppCompatActivity
                         pictureView.setColour(Color.BLACK);
                         fab3.setBackgroundTintList(ColorStateList.valueOf(Color.YELLOW));
                     }
+                    pictureView.invalidate();
                 }
             });
 
