@@ -182,7 +182,7 @@ public class PictureView extends View {
             } else {
                 Matrix matrix = new Matrix();
                 matrix.reset();
-                matrix.setTranslate(getWidth()/2,getHeight()/2);
+                matrix.setTranslate(- bitmap.getWidth()/2,- bitmap.getHeight()/2);
                 matrix.postScale(mScaleFactor, mScaleFactor);
                 matrix.preRotate(mRotate);
                 matrix.postTranslate(mPosX , mPosY );
