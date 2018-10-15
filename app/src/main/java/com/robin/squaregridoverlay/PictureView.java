@@ -84,6 +84,9 @@ public class PictureView extends View {
     public void setRotating(boolean r) {
         rotating = r;
     }
+    public boolean getRotating() {
+      return  rotating ;
+    }
 
     public void setBitmap(Bitmap bmp) {
         bitmap = bmp;
@@ -250,7 +253,6 @@ public class PictureView extends View {
                 mActivePointerId = ev.getPointerId(0);
                 break;
             }
-
             case MotionEvent.ACTION_MOVE: {
                 final int pointerIndex = ev.findPointerIndex(mActivePointerId);
                 final float x = ev.getX(pointerIndex);
@@ -258,14 +260,10 @@ public class PictureView extends View {
 
                 // Only move if the ScaleGestureDetector isn't processing a gesture.
                 if (!mScaleDetector.isInProgress()) {
-                //if (true) {
-
                     final float dx = x - mLastTouchX;
                     final float dy = y - mLastTouchY;
-
                     mPosX += dx;
                     mPosY += dy;
-
                     invalidate();
                 }
 
@@ -300,12 +298,10 @@ public class PictureView extends View {
                 break;
             }
         }
-
         return true;
     }
 
     private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
-
         @Override
         public boolean onScale(ScaleGestureDetector detector) {
             if (!rotating) {
@@ -313,11 +309,8 @@ public class PictureView extends View {
                 // Don't let the object get too small or too large.
                 mScaleFactor = Math.max(0.1f, Math.min(mScaleFactor, 10.0f));
                 //   Toast.makeText(PictureView.this.getContext(), "" + detector.getScaleFactor(), Toast.LENGTH_SHORT).show();
-
             } else {
-
                 mRotate += ROTATION_MULTIPLIER * (detector.getScaleFactor() - 1);
-
             }
             invalidate();
             return true;

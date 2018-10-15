@@ -40,8 +40,20 @@
         android:id="@+id/action_grid_5x5"
         android:icon="@drawable/rtp_5x5"
         android:orderInCategory="100"
-        android:title="5x5"
+        android:title="5 x 5"
         app:showAsAction="ifRoom" />
+    <item
+    android:id="@+id/action_grid_7x5"
+    android:icon="@drawable/rtp_7x5"
+    android:orderInCategory="100"
+    android:title="7 x 5"
+    app:showAsAction="ifRoom" />
+    <item
+    android:id="@+id/action_grid_5x7"
+    android:icon="@drawable/rtp_5x7"
+    android:orderInCategory="100"
+    android:title="5 x 7"
+    app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_grid_colour_black"
         android:icon="@drawable/rtp_black"
@@ -57,18 +69,5 @@
         android:title="Yellow"
         app:showAsAction="ifRoom" />
 
-    <item
-        android:id="@+id/action_image_scale_mode"
-        android:icon="@drawable/rtp_scale_mode"
-        android:orderInCategory="100"
-        android:title="Scale Mode"
-        app:showAsAction="ifRoom" />
 
-
-    <item
-        android:id="@+id/action_image_rotate_mode"
-        android:icon="@drawable/rtp_rotate_mode"
-        android:orderInCategory="100"
-        android:title="Rotate"
-        app:showAsAction="ifRoom" />
 </menu>

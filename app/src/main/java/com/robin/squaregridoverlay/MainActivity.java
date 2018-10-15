@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -42,6 +43,10 @@ public class MainActivity extends AppCompatActivity
     Uri imageUri;
     int orientation;
 
+    private int lockedColour = Color.RED;
+    private int unLockedColour = Color.GREEN;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +58,6 @@ public class MainActivity extends AppCompatActivity
             final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
 
-            final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
             final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -63,6 +67,40 @@ public class MainActivity extends AppCompatActivity
             NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
             navigationView.setNavigationItemSelectedListener(this);
 
+
+            final FloatingActionButton fab2 = (FloatingActionButton) findViewById(R.id.fab2);
+            fab2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    boolean isrotating = pictureView.getRotating();
+                    pictureView.setRotating(!isrotating);
+                    if (isrotating) {
+                        fab2.setImageResource(android.R.drawable.ic_menu_rotate);
+
+                    } else {
+                        fab2.setImageResource(android.R.drawable.ic_menu_search);
+                    }
+                }
+            });
+
+
+            final FloatingActionButton fab3 = (FloatingActionButton) findViewById(R.id.fab3);
+            fab2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    boolean isblack = (pictureView.getColour() == Color.BLACK);
+                    if (isblack) {
+                        pictureView.setColour(Color.YELLOW);
+                        fab3.setBackgroundTintList(ColorStateList.valueOf(Color.BLACK));
+                    } else {
+                        pictureView.setColour(Color.BLACK);
+                        fab3.setBackgroundTintList(ColorStateList.valueOf(Color.YELLOW));
+                    }
+                }
+            });
+
+
+            final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -71,16 +109,20 @@ public class MainActivity extends AppCompatActivity
                         Snackbar.make(view, "Locked", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
 
-                        orientation= getRequestedOrientation();
+                        orientation = getRequestedOrientation();
                         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+                        fab.setBackgroundTintList(ColorStateList.valueOf(lockedColour));
+
                     } else {
                         Snackbar.make(view, "Unocked", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
                         setRequestedOrientation(orientation);
+                        fab.setBackgroundTintList(ColorStateList.valueOf(unLockedColour));
                     }
                     pictureView.setStateLocked(locked);
                 }
             });
+
 
             pictureView = (PictureView) findViewById(R.id.pictureView);
 
@@ -97,8 +139,8 @@ public class MainActivity extends AppCompatActivity
         savedInstanceState.putFloat("mPosY", pictureView.getPosY());
         savedInstanceState.putFloat("mRotate", pictureView.getRotate());
         savedInstanceState.putFloat("mScale", pictureView.getScale());
-        String stringUri="";
-        if (imageUri != null) stringUri=imageUri.toString();
+        String stringUri = "";
+        if (imageUri != null) stringUri = imageUri.toString();
         savedInstanceState.putString("imageUri", stringUri);
     }
 
@@ -106,7 +148,7 @@ public class MainActivity extends AppCompatActivity
         if (savedInstanceState != null) {
             pictureView.setColour(savedInstanceState.getInt("colour", Color.BLACK));
             pictureView.setColumns(savedInstanceState.getInt("columns", 1));
-            pictureView.setRows(savedInstanceState.getInt("rows",1));
+            pictureView.setRows(savedInstanceState.getInt("rows", 1));
             pictureView.setPosX(savedInstanceState.getFloat("mPosX", 0f));
             pictureView.setPosY(savedInstanceState.getFloat("mPosY", 0f));
             pictureView.setRotate(savedInstanceState.getFloat("mRotate", 0f));
@@ -152,36 +194,28 @@ public class MainActivity extends AppCompatActivity
             pictureView.setRowsCols(3, 3);
             pictureView.invalidate();
             return true;
-        }else if (id == R.id.action_grid_4x4) {
+        } else if (id == R.id.action_grid_4x4) {
             pictureView.setRowsCols(4, 4);
             pictureView.invalidate();
             return true;
-        }else if (id == R.id.action_grid_5x5) {
+        } else if (id == R.id.action_grid_5x5) {
             pictureView.setRowsCols(5, 5);
             pictureView.invalidate();
             return true;
-        }else if (id == R.id.action_grid_4x3) {
+        } else if (id == R.id.action_grid_7x5) {
+            pictureView.setRowsCols(7, 5);
+            pictureView.invalidate();
+            return true;
+        } else if (id == R.id.action_grid_5x7) {
+            pictureView.setRowsCols(5, 7);
+            pictureView.invalidate();
+            return true;
+        } else if (id == R.id.action_grid_4x3) {
             pictureView.setRowsCols(4, 3);
             pictureView.invalidate();
             return true;
-        }else if (id == R.id.action_grid_3x4) {
+        } else if (id == R.id.action_grid_3x4) {
             pictureView.setRowsCols(3, 4);
-            pictureView.invalidate();
-            return true;
-        } else if (id == R.id.action_grid_colour_black) {
-            pictureView.setColour(Color.BLACK);
-            pictureView.invalidate();
-            return true;
-        } else if (id == R.id.action_grid_colour_yellow) {
-            pictureView.setColour(Color.YELLOW);
-            pictureView.invalidate();
-            return true;
-        } else if (id == R.id.action_image_rotate_mode) {
-            pictureView.setRotating(true);
-            pictureView.invalidate();
-            return true;
-        } else if (id == R.id.action_image_scale_mode) {
-            pictureView.setRotating(false);
             pictureView.invalidate();
             return true;
         }
@@ -202,8 +236,8 @@ public class MainActivity extends AppCompatActivity
                 // Bring up gallery to select a photo
                 startActivityForResult(selectImageIntent, SELECT_PHOTO);
             }
-           // Intent chooser = Intent.createChooser(selectImageIntent, "Choose Picture");
-          //  startActivityForResult(chooser, SELECT_PHOTO);
+            // Intent chooser = Intent.createChooser(selectImageIntent, "Choose Picture");
+            //  startActivityForResult(chooser, SELECT_PHOTO);
 
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
