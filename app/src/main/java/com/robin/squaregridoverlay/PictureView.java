@@ -28,7 +28,10 @@ public class PictureView extends View {
     private String currentPicture;
     private Bitmap bitmap;
 
-    private int colour = Color.BLACK;
+    public static int darkColour=Color.BLACK;
+    public static int lightColour=Color.YELLOW;
+
+    private int colour = darkColour;
 
     private int columns = 0;
     private int rows = 0;

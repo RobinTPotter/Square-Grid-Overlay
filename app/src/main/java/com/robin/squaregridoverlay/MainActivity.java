@@ -89,14 +89,14 @@ public class MainActivity extends AppCompatActivity
             fab3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    boolean isblack = (pictureView.getColour() == Color.BLACK);
+                    boolean isblack = (pictureView.getColour() == PictureView.darkColour);
                     if (locked) return;
                     if (isblack) {
-                        pictureView.setColour(Color.YELLOW);
-                        fab3.setBackgroundTintList(ColorStateList.valueOf(Color.BLACK));
+                        pictureView.setColour(PictureView.lightColour);
+                        fab3.setBackgroundTintList(ColorStateList.valueOf(PictureView.darkColour));
                     } else {
-                        pictureView.setColour(Color.BLACK);
-                        fab3.setBackgroundTintList(ColorStateList.valueOf(Color.YELLOW));
+                        pictureView.setColour(PictureView.darkColour);
+                        fab3.setBackgroundTintList(ColorStateList.valueOf(PictureView.lightColour));
                     }
                     pictureView.invalidate();
                 }
@@ -126,10 +126,10 @@ public class MainActivity extends AppCompatActivity
                 }
             });
 
-                locked=!locked;
-            fab.callOnClick();
-            fab2.callOnClick();
-            fab3.callOnClick();
+            locked = !locked;
+            fab.setBackgroundTintList(ColorStateList.valueOf(unLockedColour));
+            fab3.setBackgroundTintList(ColorStateList.valueOf(PictureView.lightColour));
+            fab2.setImageResource(android.R.drawable.ic_menu_rotate);
 
             pictureView = (PictureView) findViewById(R.id.pictureView);
 
@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity
 
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
-            pictureView.setColour(savedInstanceState.getInt("colour", Color.BLACK));
+            pictureView.setColour(savedInstanceState.getInt("colour", PictureView.darkColour));
             pictureView.setColumns(savedInstanceState.getInt("columns", 1));
             pictureView.setRows(savedInstanceState.getInt("rows", 1));
             pictureView.setPosX(savedInstanceState.getFloat("mPosX", 0f));
@@ -225,7 +225,7 @@ public class MainActivity extends AppCompatActivity
             pictureView.setRowsCols(3, 4);
             pictureView.invalidate();
             return true;
-        }else if (id == R.id.action_reset) {
+        } else if (id == R.id.action_reset) {
             pictureView.setRowsCols(0, 0);
             pictureView.setRotate(0);
             pictureView.setScale(1);
