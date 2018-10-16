@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void onSaveInstanceState(Bundle savedInstanceState) {
-        savedInstanceState.putInt("colour", pictureView.getColour());
+        savedInstanceState.putInt("colour", pictureView.getColourPointer());
         savedInstanceState.putInt("columns", pictureView.getColumns());
         savedInstanceState.putInt("rows", pictureView.getRows());
         savedInstanceState.putFloat("mPosX", pictureView.getPosX());
@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity
 
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
-            pictureView.setColour(savedInstanceState.getInt("colour", PictureView.noColourColour));
+            pictureView.setColour(savedInstanceState.getInt("colour", 0));
             pictureView.setColumns(savedInstanceState.getInt("columns", 1));
             pictureView.setRows(savedInstanceState.getInt("rows", 1));
             pictureView.setPosX(savedInstanceState.getFloat("mPosX", 0f));

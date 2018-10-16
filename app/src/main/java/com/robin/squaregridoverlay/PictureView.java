@@ -120,7 +120,7 @@ public static int noColourColour = Color.GRAY;
     }
 
     public int getColour() {
-        return colour;
+        return gridColours[(gridColourPointer) % gridColours.length];
     }
 
     public int getColourPointer() {
