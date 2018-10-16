@@ -28,8 +28,8 @@ public class PictureView extends View {
     private String currentPicture;
     private Bitmap bitmap;
 
-    public static int darkColour=Color.BLACK;
-    public static int lightColour=Color.YELLOW;
+    public static int darkColour = Color.BLACK;
+    public static int lightColour = Color.YELLOW;
 
     private int colour = darkColour;
 
@@ -138,8 +138,8 @@ public class PictureView extends View {
     }
 
     public void setRowsCols(int rt, int ct) {
-        rows = rt;
-        columns = ct;
+        this.rows = rt;
+        this.columns = ct;
     }
 
     public void onDraw(Canvas canvas) {
@@ -189,20 +189,20 @@ public class PictureView extends View {
                 matrix.setTranslate(-bitmap.getWidth() / 2, -bitmap.getHeight() / 2);
                 matrix.postScale(mScaleFactor, mScaleFactor);
                 matrix.postRotate(mRotate);
-                matrix.postTranslate(getWidth()/2, getHeight()/2);
+                matrix.postTranslate(getWidth() / 2, getHeight() / 2);
                 matrix.postTranslate(mPosX, mPosY);
                 canvas.drawBitmap(bitmap, matrix, null);
             }
             //make sure grid goes in the centre
 
             //Toast.makeText(this, "canvas is " + canvas.toString(), Toast.LENGTH_SHORT).show();
+            
+            Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+            paint.setStrokeWidth(1.0f);
+            paint.setStyle(Paint.Style.STROKE);
+            paint.setColor(colour);
 
             if (columns > 0 & rows > 0) {
-
-                Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-                paint.setStrokeWidth(1.0f);
-                paint.setStyle(Paint.Style.STROKE);
-                paint.setColor(colour);
 
                 //Toast.makeText(this, "set paints etc", Toast.LENGTH_SHORT).show();
 
@@ -225,10 +225,10 @@ public class PictureView extends View {
                     }
                 }
 
-                if (paint.getTextSize() != 20.f) paint.setTextSize(20.0f);
-                canvas.drawText("" + mScaleFactor + " " + mRotate + " " + mPosX + "," + mPosY, 0, getHeight() - 20, paint);
-
             }
+
+            if (paint.getTextSize() != 20.f) paint.setTextSize(20.0f);
+            canvas.drawText("" + mScaleFactor + " " + mRotate + " " + mPosX + "," + mPosY, 0, getHeight() - 20, paint);
 
         } catch (Exception ex) {
 

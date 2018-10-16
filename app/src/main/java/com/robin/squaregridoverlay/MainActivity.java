@@ -67,8 +67,39 @@ public class MainActivity extends AppCompatActivity
             NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
             navigationView.setNavigationItemSelectedListener(this);
 
+            pictureView = (PictureView) findViewById(R.id.pictureView);
+
+
+            final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+            fab.setBackgroundTintList(ColorStateList.valueOf(unLockedColour));
+
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    locked = !locked;
+                    if (locked) {
+                        Snackbar.make(view, "Locked", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+
+                       // orientation = getRequestedOrientation();
+                      //  setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+                        fab.setBackgroundTintList(ColorStateList.valueOf(lockedColour));
+
+                    } else {
+                        Snackbar.make(view, "Unocked", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                      //  setRequestedOrientation(orientation);
+                        fab.setBackgroundTintList(ColorStateList.valueOf(unLockedColour));
+                    }
+                    pictureView.setStateLocked(locked);
+                }
+            });
 
             final FloatingActionButton fab2 = (FloatingActionButton) findViewById(R.id.fab2);
+
+            fab2.setImageResource(android.R.drawable.ic_menu_rotate);
+
             fab2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -86,6 +117,9 @@ public class MainActivity extends AppCompatActivity
 
 
             final FloatingActionButton fab3 = (FloatingActionButton) findViewById(R.id.fab3);
+
+            fab3.setBackgroundTintList(ColorStateList.valueOf(PictureView.lightColour));
+
             fab3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -103,35 +137,9 @@ public class MainActivity extends AppCompatActivity
             });
 
 
-            final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-            fab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    locked = !locked;
-                    if (locked) {
-                        Snackbar.make(view, "Locked", Snackbar.LENGTH_LONG)
-                                .setAction("Action", null).show();
 
-                        orientation = getRequestedOrientation();
-                        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
-                        fab.setBackgroundTintList(ColorStateList.valueOf(lockedColour));
 
-                    } else {
-                        Snackbar.make(view, "Unocked", Snackbar.LENGTH_LONG)
-                                .setAction("Action", null).show();
-                        setRequestedOrientation(orientation);
-                        fab.setBackgroundTintList(ColorStateList.valueOf(unLockedColour));
-                    }
-                    pictureView.setStateLocked(locked);
-                }
-            });
 
-            locked = !locked;
-            fab.setBackgroundTintList(ColorStateList.valueOf(unLockedColour));
-            fab3.setBackgroundTintList(ColorStateList.valueOf(PictureView.lightColour));
-            fab2.setImageResource(android.R.drawable.ic_menu_rotate);
-
-            pictureView = (PictureView) findViewById(R.id.pictureView);
 
         } catch (Exception ex) {
             Toast.makeText(this, "error: " + ex.getMessage(), Toast.LENGTH_LONG).show();
@@ -227,10 +235,10 @@ public class MainActivity extends AppCompatActivity
             return true;
         } else if (id == R.id.action_reset) {
             pictureView.setRowsCols(0, 0);
-            pictureView.setRotate(0);
-            pictureView.setScale(1);
-            pictureView.setPosX(0);
-            pictureView.setPosY(0);
+            pictureView.setRotate(0.0f);
+            pictureView.setScale(1.0f);
+            pictureView.setPosX(0.0f);
+            pictureView.setPosY(0.0f);
             pictureView.invalidate();
             return true;
         }
