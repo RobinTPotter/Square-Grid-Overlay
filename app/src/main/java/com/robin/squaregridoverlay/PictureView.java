@@ -17,6 +17,10 @@ public class PictureView extends View {
 
     private static final float ROTATION_MULTIPLIER = 50.0f;
 
+    int[] gridColours = new int[]{ Color.BLACK,  Color.YELLOW, Color.GRAY};
+int gridColourPointer = 0;
+public static int noColourColour = Color.GRAY;
+
     private int offsetx = 0;
     private int offsety = 0;
 
@@ -28,10 +32,7 @@ public class PictureView extends View {
     private String currentPicture;
     private Bitmap bitmap;
 
-    public static int darkColour = Color.BLACK;
-    public static int lightColour = Color.YELLOW;
-
-    private int colour = darkColour;
+    private int colour = gridColours[gridColourPointer];
 
     private int columns = 0;
     private int rows = 0;
@@ -98,7 +99,8 @@ public class PictureView extends View {
     }
 
     public void setColour(int col) {
-        colour = col;
+        gridColourPointer = col;
+        colour=gridColours[gridColourPointer];
     }
 
     public void setScale(float sc) {
@@ -121,6 +123,10 @@ public class PictureView extends View {
         return colour;
     }
 
+    public int getColourPointer() {
+        return gridColourPointer;
+    }
+
     public float getScale() {
         return mScaleFactor;
     }
@@ -140,6 +146,19 @@ public class PictureView extends View {
     public void setRowsCols(int rt, int ct) {
         this.rows = rt;
         this.columns = ct;
+    }
+
+    public int getNextColour() {
+        return gridColours[(gridColourPointer+1) % gridColours.length];
+    }
+
+    public void incrementColourPointer() {
+        gridColourPointer++;
+        if (gridColourPointer>=gridColours.length) {
+            gridColourPointer=0;
+        }
+        colour = gridColours[gridColourPointer];
+
     }
 
     public void onDraw(Canvas canvas) {
@@ -202,7 +221,7 @@ public class PictureView extends View {
             paint.setStyle(Paint.Style.STROKE);
             paint.setColor(colour);
 
-            if (columns > 0 & rows > 0) {
+            if ((columns > 0 && rows > 0) && colour != noColourColour) {
 
                 //Toast.makeText(this, "set paints etc", Toast.LENGTH_SHORT).show();
 

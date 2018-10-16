@@ -82,14 +82,14 @@ public class MainActivity extends AppCompatActivity
                         Snackbar.make(view, "Locked", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
 
-                       // orientation = getRequestedOrientation();
-                      //  setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+                        // orientation = getRequestedOrientation();
+                        //  setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
                         fab.setBackgroundTintList(ColorStateList.valueOf(lockedColour));
 
                     } else {
                         Snackbar.make(view, "Unocked", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
-                      //  setRequestedOrientation(orientation);
+                        //  setRequestedOrientation(orientation);
                         fab.setBackgroundTintList(ColorStateList.valueOf(unLockedColour));
                     }
                     pictureView.setStateLocked(locked);
@@ -118,27 +118,21 @@ public class MainActivity extends AppCompatActivity
 
             final FloatingActionButton fab3 = (FloatingActionButton) findViewById(R.id.fab3);
 
-            fab3.setBackgroundTintList(ColorStateList.valueOf(PictureView.lightColour));
+            //set to gray the no Colour Colour
+            fab3.setBackgroundTintList(ColorStateList.valueOf(PictureView.noColourColour));
 
             fab3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    boolean isblack = (pictureView.getColour() == PictureView.darkColour);
                     if (locked) return;
-                    if (isblack) {
-                        pictureView.setColour(PictureView.lightColour);
-                        fab3.setBackgroundTintList(ColorStateList.valueOf(PictureView.darkColour));
-                    } else {
-                        pictureView.setColour(PictureView.darkColour);
-                        fab3.setBackgroundTintList(ColorStateList.valueOf(PictureView.lightColour));
-                    }
+                    pictureView.incrementColourPointer();
+                    int col= pictureView.getNextColour();
+
+                    fab3.setBackgroundTintList(ColorStateList.valueOf(col));
+
                     pictureView.invalidate();
                 }
             });
-
-
-
-
 
 
         } catch (Exception ex) {
@@ -161,7 +155,7 @@ public class MainActivity extends AppCompatActivity
 
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
-            pictureView.setColour(savedInstanceState.getInt("colour", PictureView.darkColour));
+            pictureView.setColour(savedInstanceState.getInt("colour", pictureView.gridColours[0]));
             pictureView.setColumns(savedInstanceState.getInt("columns", 1));
             pictureView.setRows(savedInstanceState.getInt("rows", 1));
             pictureView.setPosX(savedInstanceState.getFloat("mPosX", 0f));
@@ -218,19 +212,19 @@ public class MainActivity extends AppCompatActivity
             pictureView.invalidate();
             return true;
         } else if (id == R.id.action_grid_7x5) {
-            pictureView.setRowsCols(7, 5);
-            pictureView.invalidate();
-            return true;
-        } else if (id == R.id.action_grid_5x7) {
             pictureView.setRowsCols(5, 7);
             pictureView.invalidate();
             return true;
+        } else if (id == R.id.action_grid_5x7) {
+            pictureView.setRowsCols(7, 5);
+            pictureView.invalidate();
+            return true;
         } else if (id == R.id.action_grid_4x3) {
-            pictureView.setRowsCols(4, 3);
+            pictureView.setRowsCols(3, 4);
             pictureView.invalidate();
             return true;
         } else if (id == R.id.action_grid_3x4) {
-            pictureView.setRowsCols(3, 4);
+            pictureView.setRowsCols(4, 3);
             pictureView.invalidate();
             return true;
         } else if (id == R.id.action_reset) {
