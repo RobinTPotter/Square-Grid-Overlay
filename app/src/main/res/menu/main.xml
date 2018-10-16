@@ -43,30 +43,22 @@
         android:title="5 x 5"
         app:showAsAction="ifRoom" />
     <item
-    android:id="@+id/action_grid_7x5"
-    android:icon="@drawable/rtp_7x5"
-    android:orderInCategory="100"
-    android:title="7 x 5"
-    app:showAsAction="ifRoom" />
-    <item
-    android:id="@+id/action_grid_5x7"
-    android:icon="@drawable/rtp_5x7"
-    android:orderInCategory="100"
-    android:title="5 x 7"
-    app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_grid_colour_black"
-        android:icon="@drawable/rtp_black"
+        android:id="@+id/action_grid_7x5"
+        android:icon="@drawable/rtp_7x5"
         android:orderInCategory="100"
-        android:title="Black"
+        android:title="7 x 5"
         app:showAsAction="ifRoom" />
-
-
     <item
-        android:id="@+id/action_grid_colour_yellow"
-        android:icon="@drawable/rtp_yellow"
+        android:id="@+id/action_grid_5x7"
+        android:icon="@drawable/rtp_5x7"
         android:orderInCategory="100"
-        android:title="Yellow"
+        android:title="5 x 7"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_reset"
+        android:icon="@drawable/rtp_reset"
+        android:orderInCategory="100"
+        android:title="Reset"
         app:showAsAction="ifRoom" />
 
 

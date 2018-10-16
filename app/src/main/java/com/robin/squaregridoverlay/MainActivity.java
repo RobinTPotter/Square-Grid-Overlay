@@ -126,6 +126,10 @@ public class MainActivity extends AppCompatActivity
                 }
             });
 
+                locked=!locked;
+            fab.callOnClick();
+            fab2.callOnClick();
+            fab3.callOnClick();
 
             pictureView = (PictureView) findViewById(R.id.pictureView);
 
@@ -219,6 +223,14 @@ public class MainActivity extends AppCompatActivity
             return true;
         } else if (id == R.id.action_grid_3x4) {
             pictureView.setRowsCols(3, 4);
+            pictureView.invalidate();
+            return true;
+        }else if (id == R.id.action_reset) {
+            pictureView.setRowsCols(0, 0);
+            pictureView.setRotate(0);
+            pictureView.setScale(1);
+            pictureView.setPosX(0);
+            pictureView.setPosY(0);
             pictureView.invalidate();
             return true;
         }
