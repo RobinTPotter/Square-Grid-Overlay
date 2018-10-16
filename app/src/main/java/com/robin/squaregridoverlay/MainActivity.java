@@ -124,16 +124,13 @@ public class MainActivity extends AppCompatActivity
             fab3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (locked) return;
+                    //if (locked) return;
                     pictureView.incrementColourPointer();
                     int col= pictureView.getNextColour();
-
                     fab3.setBackgroundTintList(ColorStateList.valueOf(col));
-
                     pictureView.invalidate();
                 }
             });
-
 
         } catch (Exception ex) {
             Toast.makeText(this, "error: " + ex.getMessage(), Toast.LENGTH_LONG).show();
@@ -155,7 +152,7 @@ public class MainActivity extends AppCompatActivity
 
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
-            pictureView.setColour(savedInstanceState.getInt("colour", pictureView.gridColours[0]));
+            pictureView.setColour(savedInstanceState.getInt("colour", PictureView.noColourColour));
             pictureView.setColumns(savedInstanceState.getInt("columns", 1));
             pictureView.setRows(savedInstanceState.getInt("rows", 1));
             pictureView.setPosX(savedInstanceState.getFloat("mPosX", 0f));
