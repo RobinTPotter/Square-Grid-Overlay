@@ -132,10 +132,31 @@ public class MainActivity extends AppCompatActivity
                 }
             });
 
+   Intent intent = getIntent();
+    String action = intent.getAction();
+    String type = intent.getType();
+
+    if (Intent.ACTION_SEND.equals(action) && type != null) {
+        if (type.startsWith("image/")) {
+            handleSendImage(intent); // Handle single image being sent
+        }
+    }
+
+
+
         } catch (Exception ex) {
             Toast.makeText(this, "error: " + ex.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
+
+
+
+private void handleSendImage(Intent intent) {
+    Uri imageUri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
+    if (imageUri != null) {
+        // Update UI to reflect image being shared
+    }
+}
 
     public void onSaveInstanceState(Bundle savedInstanceState) {
         savedInstanceState.putInt("colour", pictureView.getColourPointer());
