@@ -16,6 +16,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity
                         fab.setBackgroundTintList(ColorStateList.valueOf(lockedColour));
 
                     } else {
-                        Snackbar.make(view, "Unocked", Snackbar.LENGTH_LONG)
+                        Snackbar.make(view, "Unlocked", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
                         //  setRequestedOrientation(orientation);
                         fab.setBackgroundTintList(ColorStateList.valueOf(unLockedColour));
@@ -121,34 +122,39 @@ public class MainActivity extends AppCompatActivity
             //set to gray the no Colour Colour
             fab3.setBackgroundTintList(ColorStateList.valueOf(PictureView.noColourColour));
 
+            try {
+                int col = pictureView.getNextColour();
+                fab3.setBackgroundTintList(ColorStateList.valueOf(col));
+            } catch (Exception ex) {
+                Log.d("!","unable to preempt fab3 button");
+            }
+
             fab3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     //if (locked) return;
                     pictureView.incrementColourPointer();
-                    int col= pictureView.getNextColour();
+                    int col = pictureView.getNextColour();
                     fab3.setBackgroundTintList(ColorStateList.valueOf(col));
                     pictureView.invalidate();
                 }
             });
 
-   Intent intent = getIntent();
-    String action = intent.getAction();
-    String type = intent.getType();
+            Intent intent = getIntent();
+            String action = intent.getAction();
+            String type = intent.getType();
 
-    if (Intent.ACTION_SEND.equals(action) && type != null) {
-        if (type.startsWith("image/")) {
-            handleSendImage(intent); // Handle single image being sent
-        }
-    }
-
+            if (Intent.ACTION_SEND.equals(action) && type != null) {
+                if (type.startsWith("image/")) {
+                    handleSendImage(intent); // Handle single image being sent
+                }
+            }
 
 
         } catch (Exception ex) {
             Toast.makeText(this, "error: " + ex.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
-
 
 
     public void onSaveInstanceState(Bundle savedInstanceState) {
@@ -162,6 +168,11 @@ public class MainActivity extends AppCompatActivity
         String stringUri = "";
         if (imageUri != null) stringUri = imageUri.toString();
         savedInstanceState.putString("imageUri", stringUri);
+
+        savedInstanceState.putBoolean("longHeight", pictureView.isLongHeight());
+        savedInstanceState.putBoolean("longWidth", pictureView.isLongWidth());
+        savedInstanceState.putBoolean("square", pictureView.isSquare());
+
     }
 
     public void onRestoreInstanceState(Bundle savedInstanceState) {
@@ -174,7 +185,16 @@ public class MainActivity extends AppCompatActivity
             pictureView.setRotate(savedInstanceState.getFloat("mRotate", 0f));
             pictureView.setScale(savedInstanceState.getFloat("mScale", 1.0f));
             imageUri = Uri.parse(savedInstanceState.getString("imageUri", ""));
+
+
+            pictureView.setLongWidth(savedInstanceState.getBoolean("longWidth", false));
+            pictureView.setLongHeight(savedInstanceState.getBoolean("longHeight", false));
+            pictureView.setSquare(savedInstanceState.getBoolean("square", true));
+
             loadPicture();
+
+
+
         }
     }
 
@@ -204,9 +224,7 @@ public class MainActivity extends AppCompatActivity
         if (locked) return true;
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        } else if (id == R.id.action_grid_2x2) {
+        if (id == R.id.action_grid_2x2) {
             item.setChecked(true);
             pictureView.setRowsCols(2, 2);
             pictureView.invalidate();
@@ -264,18 +282,21 @@ public class MainActivity extends AppCompatActivity
             pictureView.setLongHeight(true);
             pictureView.setLongWidth(false);
             pictureView.setSquare(false);
+            pictureView.invalidate();
             return true;
-        }else if (id == R.id.longwidth) {
+        } else if (id == R.id.longwidth) {
             item.setChecked(true);
             pictureView.setLongHeight(false);
             pictureView.setLongWidth(true);
             pictureView.setSquare(false);
+            pictureView.invalidate();
             return true;
-        }else if (id == R.id.square) {
+        } else if (id == R.id.square) {
             item.setChecked(true);
             pictureView.setLongHeight(false);
             pictureView.setLongWidth(false);
             pictureView.setSquare(true);
+            pictureView.invalidate();
             return true;
         }
 
@@ -316,6 +337,7 @@ public class MainActivity extends AppCompatActivity
                 }
         }
     }
+
     private void handleSendImage(Intent intent) {
         imageUri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
         if (imageUri != null) {
