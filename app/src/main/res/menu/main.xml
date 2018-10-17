@@ -1,75 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_grid_2x2"
-        android:icon="@drawable/rtp_2x2"
-        android:orderInCategory="100"
-        android:title="2 x 2"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_grid_3x3"
-        android:icon="@drawable/rtp_3x3"
-        android:orderInCategory="100"
-        android:title="3 x 3"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_grid_4x4"
-        android:icon="@drawable/rtp_4x4"
-        android:orderInCategory="100"
-        android:title="4 x 4"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_grid_4x3"
-        android:icon="@drawable/rtp_4x3"
-        android:orderInCategory="100"
-        android:title="4 x 3"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_grid_3x4"
-        android:icon="@drawable/rtp_3x4"
-        android:orderInCategory="100"
-        android:title="3 x 4"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_grid_5x5"
-        android:icon="@drawable/rtp_5x5"
-        android:orderInCategory="100"
-        android:title="5 x 5"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_grid_7x5"
-        android:icon="@drawable/rtp_7x5"
-        android:orderInCategory="100"
-        android:title="7 x 5"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_grid_5x7"
-        android:icon="@drawable/rtp_5x7"
-        android:orderInCategory="100"
-        android:title="5 x 7"
-        app:showAsAction="ifRoom" />
-
     <group android:checkableBehavior="single">
-        <item android:id="@+id/longwidth"
-            android:title="Long Width" />
-        <item android:id="@+id/longheight"
-            android:title="Long Height" />
-        <item android:id="@+id/square"
-            android:title="Square" />
+        <item
+            android:id="@+id/action_settings"
+            android:orderInCategory="100"
+            android:title="@string/action_settings"
+            app:showAsAction="ifRoom" />
+        <item
+            android:id="@+id/action_all_sqaures"
+            android:checkable="false"
+            android:orderInCategory="100"
+            android:title="Squares">
+            <menu>
+                <item
+                    android:id="@+id/action_grid_2x2"
+                    android:orderInCategory="100"
+                    android:title="2 x 2"
+                    app:showAsAction="ifRoom" />
+                <item
+                    android:id="@+id/action_grid_3x3"
+                    android:orderInCategory="100"
+                    android:title="3 x 3"
+                    app:showAsAction="ifRoom" />
+                <item
+                    android:id="@+id/action_grid_4x4"
+                    android:orderInCategory="100"
+                    android:title="4 x 4"
+                    app:showAsAction="ifRoom" />
+                <item
+                    android:id="@+id/action_grid_5x5"
+                    android:orderInCategory="100"
+                    android:title="5 x 5"
+                    app:showAsAction="ifRoom" />
+                <item
+                    android:id="@+id/action_grid_8x8"
+                    android:orderInCategory="100"
+                    android:title="8 x 8"
+                    app:showAsAction="ifRoom" />
+            </menu>
+        </item>
+        <item
+            android:id="@+id/action_grid_4x3"
+            android:orderInCategory="100"
+            android:title="4 x 3"
+            app:showAsAction="ifRoom" />
+        <item
+            android:id="@+id/action_grid_3x4"
+            android:orderInCategory="100"
+            android:title="3 x 4"
+            app:showAsAction="ifRoom" />
+        <item
+            android:id="@+id/action_grid_7x5"
+            android:orderInCategory="100"
+            android:title="7 x 5"
+            app:showAsAction="ifRoom" />
+        <item
+            android:id="@+id/action_grid_5x7"
+            android:orderInCategory="100"
+            android:title="5 x 7"
+            app:showAsAction="ifRoom" />
     </group>
-
+    <item
+        android:id="@+id/action_all_aspect"
+        android:checkable="false"
+        android:orderInCategory="100"
+        android:title="Aspect">
+        <menu
+            android:checkableBehavior="single"
+            android:orderInCategory="200">
+            <item
+                android:id="@+id/longwidth"
+                android:title="Long Width" />
+            <item
+                android:id="@+id/longheight"
+                android:title="Long Height" />
+            <item
+                android:id="@+id/square"
+                android:title="Square" />
+        </menu>
+    </item>
     <item
         android:id="@+id/action_reset"
         android:icon="@drawable/rtp_reset"
         android:orderInCategory="100"
         android:title="Reset"
         app:showAsAction="ifRoom" />
-
-
 </menu>

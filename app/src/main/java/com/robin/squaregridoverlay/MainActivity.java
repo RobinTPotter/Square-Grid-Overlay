@@ -207,34 +207,47 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         } else if (id == R.id.action_grid_2x2) {
+            item.setChecked(true);
             pictureView.setRowsCols(2, 2);
             pictureView.invalidate();
             return true;
         } else if (id == R.id.action_grid_3x3) {
+            item.setChecked(true);
             pictureView.setRowsCols(3, 3);
             pictureView.invalidate();
             return true;
         } else if (id == R.id.action_grid_4x4) {
+            item.setChecked(true);
             pictureView.setRowsCols(4, 4);
             pictureView.invalidate();
             return true;
         } else if (id == R.id.action_grid_5x5) {
+            item.setChecked(true);
             pictureView.setRowsCols(5, 5);
             pictureView.invalidate();
             return true;
+        } else if (id == R.id.action_grid_8x8) {
+            item.setChecked(true);
+            pictureView.setRowsCols(8, 8);
+            pictureView.invalidate();
+            return true;
         } else if (id == R.id.action_grid_7x5) {
+            item.setChecked(true);
             pictureView.setRowsCols(5, 7);
             pictureView.invalidate();
             return true;
         } else if (id == R.id.action_grid_5x7) {
+            item.setChecked(true);
             pictureView.setRowsCols(7, 5);
             pictureView.invalidate();
             return true;
         } else if (id == R.id.action_grid_4x3) {
+            item.setChecked(true);
             pictureView.setRowsCols(3, 4);
             pictureView.invalidate();
             return true;
         } else if (id == R.id.action_grid_3x4) {
+            item.setChecked(true);
             pictureView.setRowsCols(4, 3);
             pictureView.invalidate();
             return true;
@@ -247,16 +260,19 @@ public class MainActivity extends AppCompatActivity
             pictureView.invalidate();
             return true;
         } else if (id == R.id.longheight) {
+            item.setChecked(true);
             pictureView.setLongHeight(true);
             pictureView.setLongWidth(false);
             pictureView.setSquare(false);
             return true;
         }else if (id == R.id.longwidth) {
+            item.setChecked(true);
             pictureView.setLongHeight(false);
             pictureView.setLongWidth(true);
             pictureView.setSquare(false);
             return true;
         }else if (id == R.id.square) {
+            item.setChecked(true);
             pictureView.setLongHeight(false);
             pictureView.setLongWidth(false);
             pictureView.setSquare(true);
