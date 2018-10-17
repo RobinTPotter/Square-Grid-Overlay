@@ -246,6 +246,21 @@ public class MainActivity extends AppCompatActivity
             pictureView.setPosY(0.0f);
             pictureView.invalidate();
             return true;
+        } else if (id == R.id.longheight) {
+            pictureView.setLongHeight(true);
+            pictureView.setLongWidth(false);
+            pictureView.setSquare(false);
+            return true;
+        }else if (id == R.id.longwidth) {
+            pictureView.setLongHeight(false);
+            pictureView.setLongWidth(true);
+            pictureView.setSquare(false);
+            return true;
+        }else if (id == R.id.square) {
+            pictureView.setLongHeight(false);
+            pictureView.setLongWidth(false);
+            pictureView.setSquare(true);
+            return true;
         }
 
         return super.onOptionsItemSelected(item);

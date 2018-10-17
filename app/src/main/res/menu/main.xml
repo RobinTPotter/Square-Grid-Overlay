@@ -54,6 +54,16 @@
         android:orderInCategory="100"
         android:title="5 x 7"
         app:showAsAction="ifRoom" />
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/longwidth"
+            android:title="Long Width" />
+        <item android:id="@+id/longheight"
+            android:title="Long Height" />
+        <item android:id="@+id/square"
+            android:title="Square" />
+    </group>
+
     <item
         android:id="@+id/action_reset"
         android:icon="@drawable/rtp_reset"

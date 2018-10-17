@@ -32,6 +32,35 @@ public static int noColourColour = Color.GRAY;
     private String currentPicture;
     private Bitmap bitmap;
 
+    private boolean longWidth=false;
+    private boolean longHeight=false;
+
+    public boolean isLongWidth() {
+        return longWidth;
+    }
+
+    public void setLongWidth(boolean longWidth) {
+        this.longWidth = longWidth;
+    }
+
+    public boolean isLongHeight() {
+        return longHeight;
+    }
+
+    public void setLongHeight(boolean longHeight) {
+        this.longHeight = longHeight;
+    }
+
+    public boolean isSquare() {
+        return square;
+    }
+
+    public void setSquare(boolean square) {
+        this.square = square;
+    }
+
+    private boolean square=true;
+
     private int colour = gridColours[gridColourPointer];
 
     private int columns = 0;
@@ -61,6 +90,11 @@ public static int noColourColour = Color.GRAY;
         super(context, attr);
         mScaleDetector = new ScaleGestureDetector(context, new ScaleListener());
     }
+
+
+
+
+
 
     public void setStateLocked(boolean l) {
         stateLocked = l;
@@ -230,6 +264,14 @@ public static int noColourColour = Color.GRAY;
                 int height = getHeight() / rows;
                 if (width < height) height = width;
                 else width = height;
+
+                if (longHeight) {
+                    height =(int) (Math.sqrt(2) * height);
+                }  else if (longWidth) {
+                    width =(int) (Math.sqrt(2) * width);
+                } else if (square) {
+
+                }
 
                 offsetx = getWidth() / 2 - (width * columns) / 2;
                 offsety = getHeight() / 2 - (height * rows) / 2;
