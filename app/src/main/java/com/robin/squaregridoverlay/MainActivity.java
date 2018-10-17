@@ -151,13 +151,6 @@ public class MainActivity extends AppCompatActivity
 
 
 
-private void handleSendImage(Intent intent) {
-    Uri imageUri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
-    if (imageUri != null) {
-        // Update UI to reflect image being shared
-    }
-}
-
     public void onSaveInstanceState(Bundle savedInstanceState) {
         savedInstanceState.putInt("colour", pictureView.getColourPointer());
         savedInstanceState.putInt("columns", pictureView.getColumns());
@@ -292,6 +285,14 @@ private void handleSendImage(Intent intent) {
                 }
         }
     }
+    private void handleSendImage(Intent intent) {
+        imageUri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
+        if (imageUri != null) {
+            // Update UI to reflect image being shared
+            loadPicture();
+        }
+    }
+
 
     public void loadPicture() {
         try {
