@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:2:1-38:12
+ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:2:1-40:12
 	package
 		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:3:5-42
 		INJECTED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml
@@ -13,22 +13,8 @@ ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml
-intent-filter#android.intent.action.SEND+android.intent.category.DEFAULT
-ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:5:5-9:21
-action#android.intent.action.SEND
-ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:6:9-61
-	android:name
-		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:6:17-58
-category#android.intent.category.DEFAULT
-ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:7:9-68
-	android:name
-		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:7:19-65
-data
-ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:8:9-44
-	android:mimeType
-		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:8:15-41
 application
-ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:10:5-33:19
+ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:6:5-35:19
 MERGED from [com.android.support:design:23.4.0] C:\Users\Potterr\.android\build-cache\d5370d31f1a7a2a05886f14a44ee4fdf01acb738\output\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:appcompat-v7:23.4.0] C:\Users\Potterr\.android\build-cache\3fba3821e2dabe140acda9361d75e09c82d632c5\output\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:animated-vector-drawable:23.4.0] C:\Users\Potterr\.android\build-cache\b90488027ce814140b362b45b8dac3d8788a3fd0\output\AndroidManifest.xml:7:5-20
@@ -36,49 +22,63 @@ MERGED from [com.android.support:support-vector-drawable:23.4.0] C:\Users\Potter
 MERGED from [com.android.support:support-v4:23.4.0] C:\Users\Potterr\.android\build-cache\e17ff4a4344af0e4d9f984ebe2c0c71af11ae9cd\output\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Potterr\.android\build-cache\4f515e6cdb24f333f8c76dee34972bf67fec2f8f\output\AndroidManifest.xml:9:5-20
 	android:label
-		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:13:9-41
+		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:9:9-41
 	android:supportsRtl
-		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:14:9-35
+		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:10:9-35
 	android:allowBackup
-		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:11:9-35
+		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:7:9-35
 	android:icon
-		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:12:9-43
+		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:8:9-43
 	android:theme
-		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:15:9-40
+		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:11:9-40
 activity#com.robin.squaregridoverlay.MainActivity
-ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:17:9-25:20
+ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:13:9-27:20
 	android:label
-		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:19:13-45
+		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:15:13-45
 	android:theme
-		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:20:13-56
+		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:16:13-56
 	android:name
-		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:18:13-68
+		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:14:13-68
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:21:13-24:29
+ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:17:13-20:29
 action#android.intent.action.MAIN
+ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:18:17-69
+	android:name
+		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:18:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:19:17-77
+	android:name
+		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:19:27-74
+intent-filter#android.intent.action.SEND+android.intent.category.DEFAULT
+ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:21:13-25:29
+action#android.intent.action.SEND
 ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:22:17-69
 	android:name
 		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:22:25-66
-category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:23:17-77
+category#android.intent.category.DEFAULT
+ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:23:17-76
 	android:name
-		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:23:27-74
+		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:23:27-73
+data
+ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:24:17-52
+	android:mimeType
+		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:24:23-49
 activity#com.robin.squaregridoverlay.ScrollingActivity
-ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:26:9-31:20
+ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:28:9-33:20
 	android:label
-		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:28:13-61
+		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:30:13-61
 	android:parentActivityName
-		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:29:13-82
+		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:31:13-82
 	android:name
-		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:27:13-73
+		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:29:13-73
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:36:5-96
+ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:38:5-96
 	android:name
-		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:36:22-77
+		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:38:22-77
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:37:5-97
+ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:39:5-97
 	android:name
-		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:37:22-78
+		ADDED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml:39:22-78
 uses-sdk
 INJECTED from C:\Users\Potterr\Square-Grid-Overlay\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:design:23.4.0] C:\Users\Potterr\.android\build-cache\d5370d31f1a7a2a05886f14a44ee4fdf01acb738\output\AndroidManifest.xml:20:5-43
