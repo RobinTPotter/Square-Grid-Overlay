@@ -17,9 +17,9 @@ public class PictureView extends View {
 
     private static final float ROTATION_MULTIPLIER = 50.0f;
 
-    int[] gridColours = new int[]{ Color.BLACK,  Color.YELLOW, Color.GRAY};
-int gridColourPointer = 0;
-public static int noColourColour = Color.GRAY;
+    int[] gridColours = new int[]{Color.BLACK, Color.YELLOW, Color.GRAY};
+    int gridColourPointer = 0;
+    public static int noColourColour = Color.GRAY;
 
     private int offsetx = 0;
     private int offsety = 0;
@@ -32,8 +32,8 @@ public static int noColourColour = Color.GRAY;
     private String currentPicture;
     private Bitmap bitmap;
 
-    private boolean longWidth=false;
-    private boolean longHeight=false;
+    private boolean longWidth = false;
+    private boolean longHeight = false;
 
     public boolean isLongWidth() {
         return longWidth;
@@ -59,7 +59,7 @@ public static int noColourColour = Color.GRAY;
         this.square = square;
     }
 
-    private boolean square=true;
+    private boolean square = true;
 
     private int colour = gridColours[gridColourPointer];
 
@@ -90,10 +90,6 @@ public static int noColourColour = Color.GRAY;
         super(context, attr);
         mScaleDetector = new ScaleGestureDetector(context, new ScaleListener());
     }
-
-
-
-
 
 
     public void setStateLocked(boolean l) {
@@ -134,7 +130,7 @@ public static int noColourColour = Color.GRAY;
 
     public void setColour(int col) {
         gridColourPointer = col;
-        colour=gridColours[gridColourPointer];
+        colour = gridColours[gridColourPointer];
     }
 
     public void setScale(float sc) {
@@ -183,13 +179,13 @@ public static int noColourColour = Color.GRAY;
     }
 
     public int getNextColour() {
-        return gridColours[(gridColourPointer+1) % gridColours.length];
+        return gridColours[(gridColourPointer + 1) % gridColours.length];
     }
 
     public void incrementColourPointer() {
         gridColourPointer++;
-        if (gridColourPointer>=gridColours.length) {
-            gridColourPointer=0;
+        if (gridColourPointer >= gridColours.length) {
+            gridColourPointer = 0;
         }
         colour = gridColours[gridColourPointer];
 
@@ -248,26 +244,26 @@ public static int noColourColour = Color.GRAY;
                 canvas.drawBitmap(bitmap, matrix, null);
                 */
 
-                /*branch*/
                 Matrix matrix = new Matrix();
-                canvas.save();
+                matrix.reset();
                 matrix.setTranslate(-bitmap.getWidth() / 2, -bitmap.getHeight() / 2);
                 matrix.postTranslate(-mPosX, -mPosY);
                 matrix.postScale(mScaleFactor, mScaleFactor);
                 matrix.postRotate(mRotate);
-                canvas.concat(matrix);
+                matrix.postTranslate(getWidth() / 2, getHeight() / 2);
 
-                Matrix matrix2=new Matrix();
+                Matrix matrix2 = new Matrix();
+                matrix2.setTranslate(-mPosX, -mPosY);
+                canvas.save();
+                canvas.concat(matrix2);
+                canvas.drawBitmap(bitmap, matrix, null);
 
-                matrix2.postTranslate(getWidth() / 2, getHeight() / 2);
-                matrix2.postTranslate(mPosX, mPosY);
-                canvas.drawBitmap(bitmap, matrix2, null);
                 canvas.restore();
             }
             //make sure grid goes in the centre
 
             //Toast.makeText(this, "canvas is " + canvas.toString(), Toast.LENGTH_SHORT).show();
-            
+
             Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
             paint.setStrokeWidth(1.0f);
             paint.setStyle(Paint.Style.STROKE);
@@ -284,9 +280,9 @@ public static int noColourColour = Color.GRAY;
                 else width = height;
 
                 if (longHeight) {
-                    height =(int) (Math.sqrt(2) * height);
-                }  else if (longWidth) {
-                    width =(int) (Math.sqrt(2) * width);
+                    height = (int) (Math.sqrt(2) * height);
+                } else if (longWidth) {
+                    width = (int) (Math.sqrt(2) * width);
                 } else if (square) {
 
                 }
