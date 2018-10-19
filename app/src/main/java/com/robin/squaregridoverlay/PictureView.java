@@ -244,13 +244,14 @@ public class PictureView extends View {
                 canvas.drawBitmap(bitmap, matrix, null);
                 */
 
+
                 Matrix matrix = new Matrix();
                 matrix.reset();
                 matrix.setTranslate(-bitmap.getWidth() / 2, -bitmap.getHeight() / 2);
-                matrix.postScale(mScaleFactor, mScaleFactor,mPosX/mScaleFactor,mPosY/mScaleFactor);
-                matrix.postRotate(mRotate,mPosX/mScaleFactor,mPosY/mScaleFactor);
+                matrix.postScale(mScaleFactor, mScaleFactor);
+                matrix.postRotate(mRotate);
                 matrix.postTranslate(getWidth() / 2, getHeight() / 2);
-                matrix.postTranslate(mPosX*mScaleFactor, mPosY*mScaleFactor);
+                matrix.postTranslate(mPosX, mPosY);
                 canvas.drawBitmap(bitmap, matrix, null);
 
             }
@@ -296,7 +297,7 @@ public class PictureView extends View {
 
             }
 
-            if (paint.getTextSize() != 20.f) paint.setTextSize(20.0f);
+            if (paint.getTextSize() != 30.0f) paint.setTextSize(30.0f);
             canvas.drawText("" + mScaleFactor + " " + mRotate + " " + mPosX + "," + mPosY, 0, getHeight() - 20, paint);
 
         } catch (Exception ex) {
