@@ -237,6 +237,7 @@ public static int noColourColour = Color.GRAY;
                 Rect dst = new Rect(destx + (int) mPosX, desty + (int) mPosY, destwidth + destx + (int) mPosX, destheight + desty + (int) mPosY);
                 canvas.drawBitmap(bitmap, src, dst, null);
             } else {
+                /*
                 Matrix matrix = new Matrix();
                 matrix.reset();
                 matrix.setTranslate(-bitmap.getWidth() / 2, -bitmap.getHeight() / 2);
@@ -245,6 +246,23 @@ public static int noColourColour = Color.GRAY;
                 matrix.postTranslate(getWidth() / 2, getHeight() / 2);
                 matrix.postTranslate(mPosX, mPosY);
                 canvas.drawBitmap(bitmap, matrix, null);
+                */
+
+                /*branch*/
+                Matrix matrix = new Matrix();
+                canvas.save();
+                matrix.setTranslate(-bitmap.getWidth() / 2, -bitmap.getHeight() / 2);
+                matrix.postTranslate(-mPosX, -mPosY);
+                matrix.postScale(mScaleFactor, mScaleFactor);
+                matrix.postRotate(mRotate);
+                canvas.concat(matrix);
+
+                Matrix matrix2=new Matrix();
+
+                matrix2.postTranslate(getWidth() / 2, getHeight() / 2);
+                matrix2.postTranslate(mPosX, mPosY);
+                canvas.drawBitmap(bitmap, matrix2, null);
+                canvas.restore();
             }
             //make sure grid goes in the centre
 
