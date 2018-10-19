@@ -15,8 +15,8 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/app-release.apk" afterPath="$PROJECT_DIR$/app/app-release.apk" />
       <change beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" />
+      <change beforePath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-release-report.txt" afterPath="" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/robin/squaregridoverlay/PictureView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/robin/squaregridoverlay/PictureView.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -79,8 +79,8 @@
       <file leaf-file-name="PictureView.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/robin/squaregridoverlay/PictureView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="256" column="30" lean-forward="false" selection-start-line="256" selection-start-column="30" selection-end-line="256" selection-end-column="30" />
+            <state relative-caret-position="262">
+              <caret line="248" column="55" lean-forward="false" selection-start-line="248" selection-start-column="55" selection-end-line="248" selection-end-column="55" />
               <folding>
                 <element signature="e#1043#1044#0" expanded="true" />
                 <element signature="e#1075#1076#0" expanded="true" />
@@ -3072,8 +3072,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/robin/squaregridoverlay/PictureView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="256" column="30" lean-forward="false" selection-start-line="256" selection-start-column="30" selection-end-line="256" selection-end-column="30" />
+        <state relative-caret-position="262">
+          <caret line="248" column="55" lean-forward="false" selection-start-line="248" selection-start-column="55" selection-end-line="248" selection-end-column="55" />
           <folding>
             <element signature="e#1043#1044#0" expanded="true" />
             <element signature="e#1075#1076#0" expanded="true" />
