@@ -247,18 +247,12 @@ public class PictureView extends View {
                 Matrix matrix = new Matrix();
                 matrix.reset();
                 matrix.setTranslate(-bitmap.getWidth() / 2, -bitmap.getHeight() / 2);
-                matrix.postTranslate(mPosX*mScaleFactor, mPosY*mScaleFactor);
-                matrix.postScale(mScaleFactor, mScaleFactor);
-                matrix.postRotate(mRotate);
+                matrix.postScale(mScaleFactor, mScaleFactor,mPosX,mPosY);
+                matrix.postRotate(mRotate,mPosX,mPosY);
                 matrix.postTranslate(getWidth() / 2, getHeight() / 2);
-
-                Matrix matrix2 = new Matrix();
-                matrix2.setTranslate(mPosX, mPosY);
-                canvas.save();
-                canvas.concat(matrix2);
+                matrix.postTranslate(mPosX, mPosY);
                 canvas.drawBitmap(bitmap, matrix, null);
 
-                canvas.restore();
             }
             //make sure grid goes in the centre
 
