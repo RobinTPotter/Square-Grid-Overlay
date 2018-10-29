@@ -25,12 +25,6 @@
             </intent-filter>
 
         </activity>
-        <activity
-            android:name="com.robin.squaregridoverlay.ScrollingActivity"
-            android:label="@string/title_activity_scrolling"
-            android:parentActivityName="com.robin.squaregridoverlay.MainActivity">
-
-        </activity>
 
     </application>
 

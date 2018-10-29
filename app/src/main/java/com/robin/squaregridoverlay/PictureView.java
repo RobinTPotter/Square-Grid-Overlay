@@ -35,30 +35,6 @@ public class PictureView extends View {
     private boolean longWidth = false;
     private boolean longHeight = false;
 
-    public boolean isLongWidth() {
-        return longWidth;
-    }
-
-    public void setLongWidth(boolean longWidth) {
-        this.longWidth = longWidth;
-    }
-
-    public boolean isLongHeight() {
-        return longHeight;
-    }
-
-    public void setLongHeight(boolean longHeight) {
-        this.longHeight = longHeight;
-    }
-
-    public boolean isSquare() {
-        return square;
-    }
-
-    public void setSquare(boolean square) {
-        this.square = square;
-    }
-
     private boolean square = true;
 
     private int colour = gridColours[gridColourPointer];
@@ -91,6 +67,29 @@ public class PictureView extends View {
         mScaleDetector = new ScaleGestureDetector(context, new ScaleListener());
     }
 
+    public boolean isLongWidth() {
+        return longWidth;
+    }
+
+    public void setLongWidth(boolean longWidth) {
+        this.longWidth = longWidth;
+    }
+
+    public boolean isLongHeight() {
+        return longHeight;
+    }
+
+    public void setLongHeight(boolean longHeight) {
+        this.longHeight = longHeight;
+    }
+
+    public boolean isSquare() {
+        return square;
+    }
+
+    public void setSquare(boolean square) {
+        this.square = square;
+    }
 
     public void setStateLocked(boolean l) {
         stateLocked = l;
@@ -126,6 +125,18 @@ public class PictureView extends View {
         bmpoffsety = 0;
         bmpwidth = bmp.getWidth();
         bmpheight = bmp.getHeight();
+        int[] corners = new int[4];
+        corners[0] = bmp.getPixel(0, 0);
+        corners[1] = bmp.getPixel(bmp.getWidth() - 1, 0);
+        corners[2] = bmp.getPixel(0, bmp.getHeight() - 1);
+        corners[3] = bmp.getPixel(bmp.getWidth() - 1, bmp.getHeight() - 1);
+        int corner = corners[0];
+        try {
+            corner = corners[0] / 4 + corners[1] / 4 + corners[2] / 4 + corners[3] / 4;
+        } catch (Exception ex) {
+            Toast.makeText(this.getContext(), ex.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+        setBackgroundColor(corner);
     }
 
     public void setColour(int col) {
@@ -243,7 +254,6 @@ public class PictureView extends View {
                 matrix.postTranslate(mPosX, mPosY);
                 canvas.drawBitmap(bitmap, matrix, null);
                 */
-
 
                 Matrix matrix = new Matrix();
                 matrix.reset();
